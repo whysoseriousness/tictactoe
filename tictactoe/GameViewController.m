@@ -94,6 +94,27 @@ NSString * currentPlayer;
     [self setButtonsEnabledTo:false];
 }
 
+-(NSString*) getBoardValueAtX: (int) x andY: (int) y
+{
+    if (x >= 3 || y >= 3) { return NULL; }
+    if (y*3 + x >= 9){ return NULL; }
+    
+    return boardValues[y*3 + 9];
+    
+}
+
+-(void) computerMoveAsPlayer: (NSString *) player
+{
+//    int winningPermutations[4] = {1, 3, 2, 4};
+    int winningPermutations [4][2] = {{0,1}, {1,0}, {1,1}, {-1,1}};
+    for (int i = 0; i < 3; i++) {
+//        if(){ [self getBoardValueAtX:(i + dx) andY:(i + dy)]
+    }
+    
+    
+
+}
+
 -(void) checkForWin
 {
     for (int i = 0; i < boardValues.count; i++) {

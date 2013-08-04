@@ -461,6 +461,7 @@
 				9447BD2217AB3F2B00DC792D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9447BD2317AB3F2B00DC792D /* Build configuration list for PBXNativeTarget "tictactoeTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +470,7 @@
 				9447BD2517AB3F2B00DC792D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
