@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameViewController : UIViewController
+@interface LocalGameViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *button0;

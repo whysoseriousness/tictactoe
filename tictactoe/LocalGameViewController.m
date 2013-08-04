@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Joshua Martin. All rights reserved.
 //
 
-#import "GameViewController.h"
+#import "LocalGameViewController.h"
 
-@interface GameViewController ()
+@interface LocalGameViewController ()
 
 @end
 
-@implementation GameViewController
+@implementation LocalGameViewController
 NSArray * buttons;
 NSMutableArray * boardValues;
 NSString * currentPlayer;
