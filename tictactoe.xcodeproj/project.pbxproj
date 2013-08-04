@@ -23,7 +23,10 @@
 		9447BD1217AB3F2B00DC792D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9447BCED17AB3F2B00DC792D /* Foundation.framework */; };
 		9447BD1A17AB3F2B00DC792D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9447BD1817AB3F2B00DC792D /* InfoPlist.strings */; };
 		9447BD1D17AB3F2B00DC792D /* tictactoeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9447BD1C17AB3F2B00DC792D /* tictactoeTests.m */; };
-		9447BD2817AB417A00DC792D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9447BD2717AB417A00DC792D /* GameViewController.m */; };
+		9447BD2817AB417A00DC792D /* LocalGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9447BD2717AB417A00DC792D /* LocalGameViewController.m */; };
+		ACD27C3A17AC307A004F8216 /* BluetoothGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ACD27C3917AC307A004F8216 /* BluetoothGameViewController.m */; };
+		ACD27C3C17AC323E004F8216 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD27C3B17AC323E004F8216 /* CoreBluetooth.framework */; };
+		ACD27C3E17AC342E004F8216 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD27C3D17AC342E004F8216 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +62,12 @@
 		9447BD1917AB3F2B00DC792D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9447BD1B17AB3F2B00DC792D /* tictactoeTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tictactoeTests.h; sourceTree = "<group>"; };
 		9447BD1C17AB3F2B00DC792D /* tictactoeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tictactoeTests.m; sourceTree = "<group>"; };
-		9447BD2617AB417A00DC792D /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		9447BD2717AB417A00DC792D /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		9447BD2617AB417A00DC792D /* LocalGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalGameViewController.h; sourceTree = "<group>"; };
+		9447BD2717AB417A00DC792D /* LocalGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalGameViewController.m; sourceTree = "<group>"; };
+		ACD27C3817AC307A004F8216 /* BluetoothGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothGameViewController.h; sourceTree = "<group>"; };
+		ACD27C3917AC307A004F8216 /* BluetoothGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothGameViewController.m; sourceTree = "<group>"; };
+		ACD27C3B17AC323E004F8216 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		ACD27C3D17AC342E004F8216 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACD27C3E17AC342E004F8216 /* GameKit.framework in Frameworks */,
+				ACD27C3C17AC323E004F8216 /* CoreBluetooth.framework in Frameworks */,
 				9447BCEC17AB3F2B00DC792D /* UIKit.framework in Frameworks */,
 				9447BCEE17AB3F2B00DC792D /* Foundation.framework in Frameworks */,
 				9447BCF017AB3F2B00DC792D /* CoreGraphics.framework in Frameworks */,
@@ -109,6 +118,8 @@
 		9447BCEA17AB3F2B00DC792D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACD27C3D17AC342E004F8216 /* GameKit.framework */,
+				ACD27C3B17AC323E004F8216 /* CoreBluetooth.framework */,
 				9447BCEB17AB3F2B00DC792D /* UIKit.framework */,
 				9447BCED17AB3F2B00DC792D /* Foundation.framework */,
 				9447BCEF17AB3F2B00DC792D /* CoreGraphics.framework */,
@@ -122,11 +133,13 @@
 			children = (
 				9447BCFA17AB3F2B00DC792D /* AppDelegate.h */,
 				9447BCFB17AB3F2B00DC792D /* AppDelegate.m */,
-				9447BD0317AB3F2B00DC792D /* MainStoryboard.storyboard */,
-				9447BD2617AB417A00DC792D /* GameViewController.h */,
-				9447BD2717AB417A00DC792D /* GameViewController.m */,
 				9447BD0617AB3F2B00DC792D /* ViewController.h */,
 				9447BD0717AB3F2B00DC792D /* ViewController.m */,
+				9447BD2617AB417A00DC792D /* LocalGameViewController.h */,
+				9447BD2717AB417A00DC792D /* LocalGameViewController.m */,
+				ACD27C3817AC307A004F8216 /* BluetoothGameViewController.h */,
+				ACD27C3917AC307A004F8216 /* BluetoothGameViewController.m */,
+				9447BD0317AB3F2B00DC792D /* MainStoryboard.storyboard */,
 				9447BCF217AB3F2B00DC792D /* Supporting Files */,
 			);
 			path = tictactoe;
@@ -278,7 +291,8 @@
 				9447BCF817AB3F2B00DC792D /* main.m in Sources */,
 				9447BCFC17AB3F2B00DC792D /* AppDelegate.m in Sources */,
 				9447BD0817AB3F2B00DC792D /* ViewController.m in Sources */,
-				9447BD2817AB417A00DC792D /* GameViewController.m in Sources */,
+				9447BD2817AB417A00DC792D /* LocalGameViewController.m in Sources */,
+				ACD27C3A17AC307A004F8216 /* BluetoothGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +475,7 @@
 				9447BD2217AB3F2B00DC792D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9447BD2317AB3F2B00DC792D /* Build configuration list for PBXNativeTarget "tictactoeTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +484,7 @@
 				9447BD2517AB3F2B00DC792D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
