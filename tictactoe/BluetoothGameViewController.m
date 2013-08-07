@@ -13,10 +13,7 @@
 @end
 
 @implementation BluetoothGameViewController
-@synthesize session;
-@synthesize disconnect;
-@synthesize type;
-@synthesize button;
+@synthesize session, disconnect, type, button, DataToPack, DataToUnpack, playernumber, opponentnumber;
 
 //------------------------------------------ Default Functions ------------------------------------------
 
@@ -32,7 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self PackData:SendGeneratedNumber :playernumber :nil];
+
     if (self.session == nil)
     {
     GKPeerPickerController *picker = [[GKPeerPickerController alloc] init];
@@ -65,10 +63,36 @@ NSMutableArray * boardValues;
 
 //------------------------------------------ Bluetooth Connection ------------------------------------------
 
++ (NSDictionary *) datatypes
+{
+    return @
+    {
+        @(SendGeneratedNumber) : @"SendGeneratedNumber",
+        @(ReceiveGeneratedNumber) : @"ReceiveGeneratedNumber",
+        @(PlayerMove) : @"PlayerMove"
+    };
+}
+
++ (NSDictionary *) gamebuttons
+{
+    return @
+    {
+        @(ButtonZero) : @"ButtonZero",   @(ButtonOne) : @"ButtonOne",     @(ButtonTwo) : @"ButtonTwo",
+        @(ButtonThree) : @"ButtonThree", @(ButtonFour) : @"ButtonFour",   @(ButtonFive) : @"ButtonFive",
+        @(ButtonSix) : @"ButtonSix",     @(ButtonSeven) : @"ButtonSeven", @(ButtonEight) : @"ButtonEight"
+    };
+}
+
 - (GKSession *) peerPickerController:(GKPeerPickerController *)picker sessionForConnectionType:(GKPeerPickerConnectionType)type
 {
     GKSession* gamesession = [[GKSession alloc] initWithSessionID:@"TicTacToe" displayName:nil sessionMode:GKSessionModePeer];
     return gamesession;
+}
+
+- (void) peerPickerControllerDidCancel:(GKPeerPickerController *)picker
+{
+    picker.delegate = nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)gamepeerID toSession:(GKSession *)gamesession
@@ -80,12 +104,6 @@ NSMutableArray * boardValues;
     
     picker.delegate = nil;
     [picker dismiss];
-}
-
-- (void) peerPickerControllerDidCancel:(GKPeerPickerController *)picker
-{
-    picker.delegate = nil;
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void) session:(GKSession *)gamesession peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state
@@ -106,41 +124,103 @@ NSMutableArray * boardValues;
     }
 }
 
-- (void) Send:(NSData *)s_data Datatype:(Datatype *) type session:(GKSession *)gamesession
+//prototype function: note that is doesnt work right
+
+- (void) PackData :(Datatype) datatype :(NSInteger) generatednumber :(GameButtons) gamebutton
 {
-    switch (self.type) //very wrong just placeholding for now
+    if (datatype == 0) //Player Generated Number
     {
-        case Player:
-            [self.session sendDataToAllPeers:/*encoded data*/nil withDataMode:GKSendDataReliable error:nil];
-            break;
-            
-        case Move:
-            [self.session sendDataToAllPeers:/*encoded data*/nil withDataMode:GKSendDataReliable error:nil];
-            
-        default:
-            break;
+        NSString *pgn = [[self class] datatypes][@(SendGeneratedNumber)]; //Pack Datatype
+        [DataToPack addObject: pgn];
+        
+        NSNumber *gn = [NSNumber numberWithInteger:(generatednumber)]; //Pack Generated Number
+        [DataToPack addObject: gn];
     }
+    
+    if (datatype == 2) //Player Move
+    {
+        NSString *gb = [[self class] datatypes][@(PlayerMove)]; //Pack Datatype
+        [DataToPack addObject: gb];
+    
+        if (gamebutton < 9 & gamebutton > -1)   //Pack Player Move
+        {
+            switch (gamebutton) {
+                case 0:
+                {
+                    NSString *gb0 = [[self class] datatypes][@(ButtonZero)];
+                    [DataToPack addObject: gb0];
+                    break;
+                }
+                case 1:
+                {
+                    NSString *gb1 = [[self class] datatypes][@(ButtonOne)];
+                    [DataToPack addObject: gb1];
+                    break;
+                }
+                case 2:
+                {
+                    NSString *gb2 = [[self class] datatypes][@(ButtonTwo)];
+                    [DataToPack addObject: gb2];
+                    break;
+                }
+                case 3:
+                {
+                    NSString *gb3 = [[self class] datatypes][@(ButtonThree)];
+                    [DataToPack addObject: gb3];
+                    break;
+                }
+                case 4:
+                {
+                    NSString *gb4 = [[self class] datatypes][@(ButtonFour)];
+                    [DataToPack addObject: gb4];
+                    break;
+                }
+                case 5:
+                {
+                    NSString *gb5 = [[self class] datatypes][@(ButtonFive)];
+                    [DataToPack addObject: gb5];
+                    break;
+                }
+                case 6:
+                {
+                    NSString *gb6 = [[self class] datatypes][@(ButtonSix)];
+                    [DataToPack addObject: gb6];
+                    break;
+                }
+                case 7:
+                {
+                    NSString *gb7 = [[self class] datatypes][@(ButtonSeven)];
+                    [DataToPack addObject: gb7];
+                    break;
+                }
+                case 8:
+                {
+                    NSString *gb8 = [[self class] datatypes][@(ButtonEight)];
+                    [DataToPack addObject: gb8];
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+    }
+    
+    NSLog(@"DATATYPE %@", [DataToPack objectAtIndex:0]);
+    NSLog(@"VALUE %@", [DataToPack objectAtIndex:1]);
+    
+    // PACKING WILL MOST NOT LIKELY WORK. MAY NEED TO CREATE SEPERATE FILE
+    NSData *PackedData = [NSKeyedArchiver archivedDataWithRootObject:DataToPack];
+    [self Send:PackedData];
 }
 
-- (void) Recieve:(NSData *)r_data fromPeer:(NSString *)peer inSession:(GKSession *)gamesession
+- (void) Send:(NSData *)send //NOT YET TESTED
 {
-    //decode data with type
-    
-    /*switch (type)
-     {
-     case FirstPlayer:
-     set first player
-     call current turn
-     break;
-     
-     case TurnData
-     recieve board update and game status
-     break;
-     
-     default:
-     break;
-     }*/
-    
+    [self.session sendDataToAllPeers:send withDataMode:GKSendDataReliable error:nil];
+}
+
+- (void) Recieve:(NSData *)recieve fromPeer:(NSString *)peer session:(GKSession *)gamesession //NOT YET TESTED
+{
+    DataToUnpack = [NSKeyedUnarchiver unarchiveObjectWithData:recieve];
 }
 
 //------------------------------------------ Game Functions ------------------------------------------
@@ -159,14 +239,16 @@ NSMutableArray * boardValues;
     
     boardValues = [NSMutableArray arrayWithObjects: @"", @"", @"", @"", @"", @"", @"", @"", @"", nil];
     
+    playernumber = arc4random_uniform(1000);
+    
+    [self PackData:SendGeneratedNumber :playernumber :nil];
     [self ChooseFirstPlayer];
 }
 
 
 - (void) ChooseFirstPlayer
 {
-    
-    //send data
+
 }
 
 - (void) CurrentPlayerTurn
