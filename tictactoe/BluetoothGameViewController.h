@@ -9,34 +9,38 @@
 #import <UIKit/UIKit.h>
 #import <GameKit/GameKit.h>
 
-typedef enum Datatypes
+typedef NS_ENUM(NSUInteger, Datatype)
 {
-    Player,
-    Move
-}
-    Datatype;
+    SendGeneratedNumber = 0,
+    ReceiveGeneratedNumber = 1,
+    PlayerMove = 2
+};
 
-typedef enum GameButtons
+typedef NS_ENUM(NSUInteger, GameButtons)
 {
     ButtonZero, ButtonOne, ButtonTwo,
     ButtonThree,ButtonFour,ButtonFive,
     ButtonSix, ButtonSeven,ButtonEight,
-}
-    GameButton;
+    nil
+};
 
 @interface BluetoothGameViewController : UIViewController <GKSessionDelegate, GKPeerPickerControllerDelegate, NSCoding>
 {
     GKSession *session;
     IBOutlet UIButton *disconnect;
     Datatype type;
-    GameButton button;
+    GameButtons button;
 }
 
 @property (nonatomic, retain) GKSession *session;
 @property (nonatomic, retain) UIButton *disconnect;
 @property (nonatomic, copy) NSString *peerID;
 @property (nonatomic) Datatype type;
-@property (nonatomic) GameButton button;
+@property (nonatomic) GameButtons button;
+@property (nonatomic, strong) NSMutableArray *DataToPack;
+@property (nonatomic, strong) NSMutableArray *DataToUnpack;
+@property (nonatomic) int playernumber;
+@property (nonatomic) int opponentnumber;
 
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *button0;
@@ -49,6 +53,8 @@ typedef enum GameButtons
 @property (weak, nonatomic) IBOutlet UIButton *button7;
 @property (weak, nonatomic) IBOutlet UIButton *button8;
 
--(IBAction) disconnect:(id) sender;
+- (IBAction) disconnect:(id) sender;
+
+- (void) LoadGame;
 
 @end
