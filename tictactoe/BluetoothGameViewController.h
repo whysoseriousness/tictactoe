@@ -20,8 +20,8 @@ typedef NS_ENUM(NSUInteger, GameButtons)
 {
     ButtonZero, ButtonOne, ButtonTwo,
     ButtonThree,ButtonFour,ButtonFive,
-    ButtonSix, ButtonSeven,ButtonEight,
-    nil
+    ButtonSix, ButtonSeven,ButtonEight
+//    nil
 };
 
 @interface BluetoothGameViewController : UIViewController <GKSessionDelegate, GKPeerPickerControllerDelegate, NSCoding>

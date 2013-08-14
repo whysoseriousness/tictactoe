@@ -13,9 +13,6 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMb-44-tuY">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="IKM-N9-EJ5"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                                 <state key="normal" title="Local Game">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -26,6 +23,23 @@
                                 </state>
                                 <connections>
                                     <segue destination="rAp-Yj-GLu" kind="modal" id="Txz-2y-rg5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMW-2q-7DJ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="AqM-zn-kY1"/>
+                                    <constraint firstAttribute="height" constant="44" id="i0m-BJ-TZ8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                <state key="normal" title="JMBluetoothTest" backgroundImage="btn.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="2NZ-ev-hqi" kind="modal" id="u3L-6M-ZTn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Tic Tac Toe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yw-Mr-13r">
@@ -52,11 +66,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TMW-2q-7DJ" firstAttribute="centerX" secondItem="7yw-Mr-13r" secondAttribute="centerX" type="default" id="2Bv-LV-2nK"/>
                             <constraint firstItem="7yw-Mr-13r" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3MK-QY-cvd"/>
                             <constraint firstItem="czR-fZ-Vg1" firstAttribute="leading" secondItem="mMb-44-tuY" secondAttribute="leading" type="default" id="3rp-D9-1Ig"/>
-                            <constraint firstItem="mMb-44-tuY" firstAttribute="centerX" secondItem="7yw-Mr-13r" secondAttribute="centerX" type="default" id="5Zk-Zk-VfX"/>
                             <constraint firstAttribute="bottom" secondItem="mMb-44-tuY" secondAttribute="bottom" constant="165" id="FaQ-fZ-2G0"/>
                             <constraint firstItem="7yw-Mr-13r" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="PF9-XC-4FO"/>
+                            <constraint firstItem="TMW-2q-7DJ" firstAttribute="top" secondItem="3" secondAttribute="top" constant="174" id="aVy-OF-2Jr"/>
+                            <constraint firstItem="TMW-2q-7DJ" firstAttribute="leading" secondItem="mMb-44-tuY" secondAttribute="leading" type="default" id="ahm-xD-LyG"/>
+                            <constraint firstItem="TMW-2q-7DJ" firstAttribute="trailing" secondItem="mMb-44-tuY" secondAttribute="trailing" type="default" id="fe1-Ua-ptz"/>
                             <constraint firstAttribute="trailing" secondItem="7yw-Mr-13r" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="iMp-Kd-d83"/>
                             <constraint firstItem="mMb-44-tuY" firstAttribute="trailing" secondItem="czR-fZ-Vg1" secondAttribute="trailing" type="default" id="sOA-t2-hAO"/>
                             <constraint firstAttribute="bottom" secondItem="czR-fZ-Vg1" secondAttribute="bottom" constant="90" id="v1z-VD-LIP"/>
@@ -66,6 +83,97 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="35" y="-6"/>
+        </scene>
+        <!--Bluetooth Test View Controller-->
+        <scene sceneID="s1h-6W-YUh">
+            <objects>
+                <viewController id="2NZ-ev-hqi" customClass="JMBluetoothTestViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PaQ-8R-kU5">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rpT-tr-Tlv">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="pFy-70-HJI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtX-e3-ZJz">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="Hae-wl-kac"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="41"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="286" translatesAutoresizingMaskIntoConstraints="NO" id="ySc-AL-jmu">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="0MM-OI-mYu"/>
+                                    <constraint firstAttribute="width" constant="286" id="tXc-HA-Dc7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rip-ea-526">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="67" id="nQn-26-Dj0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                <state key="normal" title="Send">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SendMessage:" destination="2NZ-ev-hqi" eventType="touchUpInside" id="3aB-JS-vYR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ct0-a6-y0e">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectToDevice:" destination="2NZ-ev-hqi" eventType="touchUpInside" id="DEF-cf-1Ko"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ct0-a6-y0e" firstAttribute="leading" secondItem="PaQ-8R-kU5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7DY-Wi-GRn"/>
+                            <constraint firstItem="rip-ea-526" firstAttribute="bottom" secondItem="rpT-tr-Tlv" secondAttribute="bottom" type="default" id="8VS-mz-WX9"/>
+                            <constraint firstAttribute="trailing" secondItem="Ct0-a6-y0e" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="EID-h2-jTU"/>
+                            <constraint firstItem="rpT-tr-Tlv" firstAttribute="top" secondItem="PaQ-8R-kU5" secondAttribute="top" constant="156" id="Euh-oA-r7w"/>
+                            <constraint firstItem="rpT-tr-Tlv" firstAttribute="leading" secondItem="PaQ-8R-kU5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="K5z-nv-anv"/>
+                            <constraint firstItem="qtX-e3-ZJz" firstAttribute="top" secondItem="PaQ-8R-kU5" secondAttribute="top" constant="19" id="L8J-iN-d9N"/>
+                            <constraint firstAttribute="bottom" secondItem="Ct0-a6-y0e" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="OAj-ko-KPa"/>
+                            <constraint firstItem="rip-ea-526" firstAttribute="top" secondItem="rpT-tr-Tlv" secondAttribute="top" type="default" id="OWh-hd-zyV"/>
+                            <constraint firstItem="ySc-AL-jmu" firstAttribute="top" secondItem="PaQ-8R-kU5" secondAttribute="top" constant="77" id="Oos-oz-KK1"/>
+                            <constraint firstItem="rip-ea-526" firstAttribute="leading" secondItem="rpT-tr-Tlv" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="XGM-qs-yhL"/>
+                            <constraint firstItem="qtX-e3-ZJz" firstAttribute="leading" secondItem="PaQ-8R-kU5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xuy-hO-VeG"/>
+                            <constraint firstAttribute="trailing" secondItem="qtX-e3-ZJz" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="gTm-Ut-ll1"/>
+                            <constraint firstItem="rip-ea-526" firstAttribute="baseline" secondItem="rpT-tr-Tlv" secondAttribute="baseline" type="default" id="mNT-jT-na6"/>
+                            <constraint firstAttribute="trailing" secondItem="ySc-AL-jmu" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="nfC-HT-FUz"/>
+                            <constraint firstAttribute="trailing" secondItem="rip-ea-526" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uKe-4H-V6S"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="OutgoingMessageField" destination="rpT-tr-Tlv" id="XbT-PD-gsM"/>
+                        <outlet property="ReceivedMessageLabel" destination="ySc-AL-jmu" id="Fcf-ze-TTx"/>
+                        <outlet property="sendButton" destination="rip-ea-526" id="nim-Ze-YU7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CLX-WZ-GcV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="500" y="-6"/>
         </scene>
         <!--Bluetooth Game View Controller-->
         <scene sceneID="ES2-FH-RNx">
@@ -511,6 +619,9 @@
             <point key="canvasLocation" x="94" y="985"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="btn.png" width="1" height="57"/>
+    </resources>
     <classes>
         <class className="BluetoothGameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BluetoothGameViewController.h"/>
@@ -528,6 +639,16 @@
                 <relationship kind="outlet" name="button8" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="disconnect" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="infoLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="JMBluetoothTestViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JMBluetoothTestViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="SendMessage:"/>
+                <relationship kind="action" name="connectToDevice:"/>
+                <relationship kind="outlet" name="OutgoingMessageField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="ReceivedMessageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="LocalGameViewController" superclassName="UIViewController">
